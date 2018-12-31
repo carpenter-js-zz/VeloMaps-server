@@ -8,6 +8,8 @@ const { PORT, CLIENT_ORIGIN } = require('./config');
 const { dbConnect } = require('./db-mongoose');
 // const {dbConnect} = require('./db-knex');
 
+const bikeRoutesRouter = require('./routes/bike-routes');
+
 const app = express();
 
 app.use(
@@ -22,16 +24,9 @@ app.use(
   })
 );
 
-app.get('/api/routes', (req, res, next) => {
-  res.json([
-    {lat: 39.753761766463, lng: -104.99863849925396},
-    {lat: 39.750396366621935, lng: -104.99413238810894},
-    {lat: 39.746601846089845, lng: -104.9990247373521},
-    {lat: 39.745967232716154, lng: -104.99799138551589},
-    {lat: 39.74309643014503, lng: -105.00193959718581}
-  ]);
-  next();
-});
+app.use(express.json());
+
+app.use('/api/routes', bikeRoutesRouter);
 
 function runServer(port = PORT) {
   const server = app
