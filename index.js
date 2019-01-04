@@ -23,7 +23,7 @@ app.use(
     origin: CLIENT_ORIGIN
   })
 );
-
+ 
 app.use(express.json());
 
 app.use('/api/routes', bikeRoutesRouter);
