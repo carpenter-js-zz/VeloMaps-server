@@ -18,8 +18,6 @@ router.get('/', (req, res, next) => {
     });
 });
 
-// get by id - later
-
 // post
 router.post('/', (req, res, next) => {
   const { name, description, path } = req.body;
